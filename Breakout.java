@@ -67,6 +67,7 @@ public class Breakout extends GraphicsProgram {
 	public void run() {
 		
 		setupBricks();
+		setupPaddle();
 		
 		showLabel("Click to Serve!",Color.BLACK);
 		
@@ -88,6 +89,12 @@ public class Breakout extends GraphicsProgram {
 	private boolean hasWon(){
 		//TODO: Implement play
 		return true;
+	}
+	
+/**Displays paddle at the center bottom of the screen*/
+	private void setupPaddle(){
+		
+		
 	}
 	
 /**
@@ -117,7 +124,7 @@ public class Breakout extends GraphicsProgram {
  * @param row number of the brick row
  * */	
 	private void buildLayer(int row){
-				
+			/*Calculate the y coordinate of the row*/	
 			double y= BRICK_Y_OFFSET + row*(BRICK_HEIGHT+BRICK_SEP);
 			
 			/*
@@ -126,44 +133,50 @@ public class Breakout extends GraphicsProgram {
 			 */
 			double setupWidth = (NBRICKS_PER_ROW*BRICK_WIDTH)+((NBRICKS_PER_ROW-1)*BRICK_SEP);
 			double xOffset = (getWidth()-setupWidth)/2;
-						
+				
+			Color color;
+			/*Calculate the brick color*/
+			switch (row/2){
+			case 0:
+				color  = Color.RED;
+				break;
+			case 1:
+				color  = Color.ORANGE;
+				break;
+			case 2:
+				color  = Color.YELLOW;
+				break;
+			case 3:
+				color  = Color.GREEN;
+				break;
+			case 4:
+				color  = Color.CYAN;
+				break;
+			default:
+				color  = Color.BLACK;
+				break;
+		}
+			
 			for (int i=0;i<NBRICKS_PER_ROW;i++){
 				double x = xOffset+i*(BRICK_WIDTH+BRICK_SEP);
-				buildBrick(x,y,row);
+				createFilledRect(x,y,BRICK_WIDTH,BRICK_HEIGHT,color);
 			}
 		}
 		
 /**
- * Builds a colored brick
- * @param x x coordinate of the brick
- * @param y y coordinate of the bricks layer
- * @param row row number of the brick - used to color brick
+ * Creates a filled rectangle with specified dimensions
+ * @param x x coordinate of the rectangle
+ * @param y y coordinate of the rectangle
+ * @param width width of the rectangle
+ * @param height height of the rectangle
+ * @param color fill color of the rectangle
  * */	
-	private void buildBrick(double x,double y,int row){
-			GRect brick =new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
-			brick.setFilled(true);
-			switch (row/2){
-				case 0:
-					brick.setFillColor(Color.RED);
-					break;
-				case 1:
-					brick.setFillColor(Color.ORANGE);
-					break;
-				case 2:
-					brick.setFillColor(Color.YELLOW);
-					break;
-				case 3:
-					brick.setFillColor(Color.GREEN);
-					break;
-				case 4:
-					brick.setFillColor(Color.CYAN);
-					break;
-				default:
-					brick.setFillColor(Color.BLACK);
-					break;
-			}
-						
-			add(brick);
+	private void createFilledRect(double x,double y, double width, double height, Color color){
+			
+			GRect rect =new GRect(x, y, width, height);
+			rect.setFilled(true);
+			rect.setFillColor(color);						
+			add(rect);
 			
 		}
 	
