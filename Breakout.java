@@ -105,12 +105,11 @@ public class Breakout extends GraphicsProgram {
 		
 		paddle=createFilledRect(x, y, PADDLE_WIDTH, PADDLE_HEIGHT, Color.BLACK);
 		
-		add(paddle);
-		
-		
+		add(paddle);		
 	}
 	
-	// Called on mouse move to move the paddle using mouse
+	
+/**Called on mouse move to move the paddle using mouse*/
 	public void mouseMoved(MouseEvent e){
 		
 		//Screen border coordinates
@@ -118,11 +117,12 @@ public class Breakout extends GraphicsProgram {
 		double leftEdge = PADDLE_WIDTH/2;
 		
 		//Check to keep the paddle from going out of screen
-		if(e.getX()<=rightEdge && e.getX() >= leftEdge ){
+		if(e.getX() >= leftEdge && e.getX() <= rightEdge){
 			double lastX = paddle.getLocation().getX();
+			
+			//moves the paddle such that the center of the paddle
+			//tracks the mouse
 			paddle.move(e.getX()-lastX-PADDLE_WIDTH/2,0);
-			//remove(label);
-			//showLabel("pos "+lastX, Color.BLACK);
 		}
 	}
 	
