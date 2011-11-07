@@ -64,8 +64,8 @@ public class Breakout extends GraphicsProgram {
 		setupBricks();
 		
 		showLabel("Click to Serve!");
-		
-		//Implement from here
+		waitForClick();
+		remove(label);
 		
 	}
 
@@ -74,13 +74,13 @@ public class Breakout extends GraphicsProgram {
  * @param message message to be displayed
  * */
 	private void showLabel(String message){
-		GLabel label = new GLabel(message);
+		label = new GLabel(message);
 		label.setFont("SansSerif-28");
-		add(label,(getWidth()-label.getWidth())/2,(getHeight()-label.getAscent())/2);		
+		add(label,(getWidth()-label.getWidth())/2,(getHeight()+label.getAscent())/2);		
 	}
 	
 	
-/** Provides the initial brick setup for the break out game */
+/** Provides the initial brick setup for the Breakout game */
 	private void setupBricks(){
 		
 		for (int i=0;i<NBRICK_ROWS;i++){
@@ -144,5 +144,6 @@ public class Breakout extends GraphicsProgram {
 			
 		}
 	
-	
+/**Displays messages to the user*/	
+	private GLabel label ;
 }
