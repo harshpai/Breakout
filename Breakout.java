@@ -64,8 +64,7 @@ public class Breakout extends GraphicsProgram {
 
 /* Method: run() */
 /** Runs the Breakout program. */
-	public void run() {
-		
+	public void run() {		
 		
 		/*Initial setup of the game: bricks and paddle*/
 		setupBricks();
