@@ -97,7 +97,7 @@ public class Breakout extends GraphicsProgram {
 	private void showLabel(String message,Color color){
 		label = new GLabel(message);
 		label.setFont("SansSerif-28");
-		label.setColor(color)
+		label.setColor(color);
 		add(label,(getWidth()-label.getWidth())/2,(getHeight()+label.getAscent())/2);		
 	}
 	
