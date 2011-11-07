@@ -1,10 +1,10 @@
 /*
  * File: Breakout.java
  * -------------------
- * Name:
- * Section Leader:
+ * Name:Harsh Pai
+ * Section Leader:Mehran Sahami
  * 
- * This file will eventually implement the game of Breakout.
+ * This file implements the game of Breakout.
  */
 
 import acm.graphics.*;
@@ -80,20 +80,15 @@ public class Breakout extends GraphicsProgram {
 		//The game begins : Remove messages from the screen
 		remove(label);
 		
-		//The game ends: Display appropriate win or loss message 
-		if(hasWon()){
-			showLabel("You win!!!",Color.GREEN);
-		}
-		else{
-			showLabel("You lose",Color.RED);
-		}			
+		//Start turns
+		play();
 		
 	}
 
 /**Start playing*/	
-	private boolean hasWon(){
+	private void play(){
 		//TODO: Implement play
-		return true;
+		//return true;
 	}
 	
 /**Displays paddle at the center bottom of the screen*/
