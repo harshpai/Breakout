@@ -104,6 +104,8 @@ public class Breakout extends GraphicsProgram {
 		
 		paddle=createFilledRect(x, y, PADDLE_WIDTH, PADDLE_HEIGHT, Color.BLACK);
 		
+		add(paddle);
+		
 	}
 	
 	
