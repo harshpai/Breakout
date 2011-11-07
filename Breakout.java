@@ -87,13 +87,15 @@ public class Breakout extends GraphicsProgram {
 			 * the layer such that the layer is centered on the screen
 			 */
 			double setupWidth = (NBRICKS_PER_ROW*BRICK_WIDTH)+((NBRICKS_PER_ROW-1)*BRICK_SEP);
-			double x = (getWidth()-setupWidth)/2;
+			double xOffset = (getWidth()-setupWidth)/2;
 			
 			add(new GLabel("x="+x+" width="+getWidth()+" setupWidth"+setupWidth,50,200));
 			
 			
 			for (int i=0;i<NBRICKS_PER_ROW;i++){
-				buildBrick(x+i*(BRICK_WIDTH+BRICK_SEP),y,row);
+				double x = xOffset+i*(BRICK_WIDTH+BRICK_SEP);
+				buildBrick(x,y,row);
+				add(new GLabel("start="+x,50,200+10*i));
 			}
 		}
 		
