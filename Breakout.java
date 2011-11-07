@@ -63,14 +63,24 @@ public class Breakout extends GraphicsProgram {
 		
 		setupBricks();
 		
-		GLabel label = new GLabel("Click to Serve!");
-		label.setFont("SansSerif-28");
-		add(label,(getWidth()-label.getWidth())/2,(getHeight()-label.getAscent())/2);
+		showLabel("Click to Serve!");
+		
+		//Implement from here
 		
 	}
 
+/**
+ * Display the specified message at the center of the screen
+ * @param message message to be displayed
+ * */
+	private void showLabel(String message){
+		GLabel label = new GLabel(message);
+		label.setFont("SansSerif-28");
+		add(label,(getWidth()-label.getWidth())/2,(getHeight()-label.getAscent())/2);		
+	}
 	
-/** Provides the intial brick setup for the breakout game */
+	
+/** Provides the initial brick setup for the break out game */
 	private void setupBricks(){
 		
 		for (int i=0;i<NBRICK_ROWS;i++){
@@ -79,11 +89,11 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	
-	/**
-	 * Builds a Layer one brick at a time
-	 * @param row number of the brick row
-	 * */	
-		private void buildLayer(int row){
+/**
+ * Builds a Layer one brick at a time
+ * @param row number of the brick row
+ * */	
+	private void buildLayer(int row){
 				
 			double y= BRICK_Y_OFFSET + row*(BRICK_HEIGHT+BRICK_SEP);
 			
@@ -100,13 +110,13 @@ public class Breakout extends GraphicsProgram {
 			}
 		}
 		
-	/**
-	 * Builds a colored brick
-	 * @param x x coordinate of the brick
-	 * @param y y coordinate of the bricks layer
-	 * @param row row number of the brick - used to color brick
-	 * */	
-		private void buildBrick(double x,double y,int row){
+/**
+ * Builds a colored brick
+ * @param x x coordinate of the brick
+ * @param y y coordinate of the bricks layer
+ * @param row row number of the brick - used to color brick
+ * */	
+	private void buildBrick(double x,double y,int row){
 			GRect brick =new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
 			brick.setFilled(true);
 			switch (row/2){
