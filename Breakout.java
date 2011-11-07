@@ -61,6 +61,71 @@ public class Breakout extends GraphicsProgram {
 /** Runs the Breakout program. */
 	public void run() {
 		/* You fill this in, along with any subsidiary methods */
+		setupBricks();
+		
 	}
 
+	
+	private void setupBricks(){
+		
+		for (int i=0;i<NBRICK_ROWS;i++){
+			buildLayer(NBRICKS_PER_ROW,i);
+		}
+	}
+	
+	
+	/**
+	 * Builds a Layer one brick at a time
+	 * @param bricks number of bricks in a layer
+	 * @param row number of the brick row
+	 * */	
+		private void buildLayer(int bricks,int row){
+				
+			double y= BRICK_Y_OFFSET + row*(BRICK_HEIGHT+BRICK_SEP);
+			
+			/*
+			 * Calculates the x coordinate of the first brick in
+			 * the layer such that the layer is centered on the screen
+			 */
+			double x = (getWidth()-bricks*(BRICK_WIDTH+BRICK_SEP))/2;
+			
+			for (int i=0;i<bricks;i++){
+				buildBrick(x+i*(BRICK_WIDTH+BRICK_SEP),y,row);
+			}
+		}
+		
+	/**
+	 * Builds a brick
+	 * @param x x coordinate of the brick
+	 * @param y y coordinate of the bricks layer
+	 * */	
+		private void buildBrick(double x,double y,int row){
+			GRect brick =new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
+			brick.setFilled(true);
+			switch (row/2){
+				case 0:
+					brick.setFillColor(Color.RED);
+					break;
+				case 1:
+					brick.setFillColor(Color.ORANGE);
+					break;
+				case 2:
+					brick.setFillColor(Color.YELLOW);
+					break;
+				case 3:
+					brick.setFillColor(Color.GREEN);
+					break;
+				case 4:
+					brick.setFillColor(Color.CYAN);
+					break;
+				default:
+					brick.setFillColor(Color.BLACK);
+					break;
+			}
+						
+			add(brick);
+			
+		}
+	
+	
 }
