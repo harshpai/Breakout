@@ -87,7 +87,7 @@ public class Breakout extends GraphicsProgram {
 			 * Calculates the x coordinate of the first brick in
 			 * the layer such that the layer is centered on the screen
 			 */
-			double x = (getWidth()-bricks*(BRICK_WIDTH+BRICK_SEP))/2;
+			double x = (getWidth()-(bricks*BRICK_WIDTH)-((bricks+1)*BRICK_SEP))/2;
 			
 			for (int i=0;i<bricks;i++){
 				buildBrick(x+i*(BRICK_WIDTH+BRICK_SEP),y,row);
