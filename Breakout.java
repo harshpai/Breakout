@@ -94,6 +94,11 @@ public class Breakout extends GraphicsProgram {
 /**Displays paddle at the center bottom of the screen*/
 	private void setupPaddle(){
 		
+		//Calculate paddle position
+		double x = (getWidth()-PADDLE_WIDTH)/2;
+		double y = (getHeight()-PADDLE_HEIGHT-PADDLE_Y_OFFSET)/2;
+		
+		createFilledRect(x, y, PADDLE_WIDTH, PADDLE_HEIGHT, Color.BLACK);
 		
 	}
 	
