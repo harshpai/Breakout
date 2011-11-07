@@ -69,17 +69,16 @@ public class Breakout extends GraphicsProgram {
 	private void setupBricks(){
 		
 		for (int i=0;i<NBRICK_ROWS;i++){
-			buildLayer(NBRICKS_PER_ROW,i);
+			buildLayer(i);
 		}
 	}
 	
 	
 	/**
 	 * Builds a Layer one brick at a time
-	 * @param bricks number of bricks in a layer
 	 * @param row number of the brick row
 	 * */	
-		private void buildLayer(int bricks,int row){
+		private void buildLayer(int row){
 				
 			double y= BRICK_Y_OFFSET + row*(BRICK_HEIGHT+BRICK_SEP);
 			
@@ -87,9 +86,9 @@ public class Breakout extends GraphicsProgram {
 			 * Calculates the x coordinate of the first brick in
 			 * the layer such that the layer is centered on the screen
 			 */
-			double x = (getWidth()-(bricks*BRICK_WIDTH)-((bricks-1)*BRICK_SEP))/2;
+			double x = (getWidth()-(NBRICKS_PER_ROW*BRICK_WIDTH)-((NBRICKS_PER_ROW-1)*BRICK_SEP))/2;
 			
-			for (int i=0;i<bricks;i++){
+			for (int i=0;i<NBRICKS_PER_ROW;i++){
 				buildBrick(x+i*(BRICK_WIDTH+BRICK_SEP),y,row);
 			}
 		}
