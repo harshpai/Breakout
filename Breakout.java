@@ -110,17 +110,19 @@ public class Breakout extends GraphicsProgram {
 		
 	}
 	
-	
+	// Called on mouse move to move the paddle using mouse
 	public void mouseMoved(MouseEvent e){
 		
+		//Screen border coordinates
 		double rightEdge = WIDTH-PADDLE_WIDTH/2;
 		double leftEdge = PADDLE_WIDTH/2;
 		
+		//Check to keep the paddle from going out of screen
 		if(e.getX()<=rightEdge && e.getX() >= leftEdge ){
 			double lastX = paddle.getLocation().getX();
 			paddle.move(e.getX()-lastX-PADDLE_WIDTH/2,0);
-			remove(label);
-			showLabel("pos "+lastX, Color.BLACK);
+			//remove(label);
+			//showLabel("pos "+lastX, Color.BLACK);
 		}
 	}
 	
