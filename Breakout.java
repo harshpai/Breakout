@@ -210,5 +210,5 @@ public class Breakout extends GraphicsProgram {
 	private GLabel label ;
 	
 /**Paddle rectangle*/
-	private GRect paddle
+	private GRect paddle;
 }
