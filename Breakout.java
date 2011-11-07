@@ -56,6 +56,11 @@ public class Breakout extends GraphicsProgram {
 
 /** Number of turns */
 	private static final int NTURNS = 3;
+	
+/** Enables mouse listeners in the game*/	
+	public void inti(){
+		addMouseListeners();		
+	}
 
 /* Method: run() */
 /** Runs the Breakout program. */
@@ -63,19 +68,36 @@ public class Breakout extends GraphicsProgram {
 		
 		setupBricks();
 		
-		showLabel("Click to Serve!");
+		showLabel("Click to Serve!",Color.BLACK);
+		
+		//Wait for the user to serve
 		waitForClick();
+				
 		remove(label);
+		
+		if(hasWon()){
+			showLabel("You win!!!",Color.GREEN);
+		}
+		else{
+			showLabel("You lose",Color.RED);
+		}			
 		
 	}
 
+/**Start playing*/	
+	private boolean hasWon(){
+		//TODO: Implement play
+		return true;
+	}
+	
 /**
  * Display the specified message at the center of the screen
  * @param message message to be displayed
  * */
-	private void showLabel(String message){
+	private void showLabel(String message,Color color){
 		label = new GLabel(message);
 		label.setFont("SansSerif-28");
+		label.setColor(color)
 		add(label,(getWidth()-label.getWidth())/2,(getHeight()+label.getAscent())/2);		
 	}
 	
@@ -86,6 +108,7 @@ public class Breakout extends GraphicsProgram {
 		for (int i=0;i<NBRICK_ROWS;i++){
 			buildLayer(i);
 		}
+		
 	}
 	
 	
