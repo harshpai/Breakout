@@ -95,8 +95,8 @@ public class Breakout extends GraphicsProgram {
 	private void setupPaddle(){
 		
 		//Calculate paddle position
-		double x = (getWidth()-PADDLE_WIDTH)/2;
-		double y = getHeight()-PADDLE_HEIGHT-PADDLE_Y_OFFSET;
+		double x = (WIDTH-PADDLE_WIDTH)/2;
+		double y = HEIGHT -PADDLE_HEIGHT-PADDLE_Y_OFFSET;
 		
 		createFilledRect(x, y, PADDLE_WIDTH, PADDLE_HEIGHT, Color.BLACK);
 		
@@ -110,7 +110,7 @@ public class Breakout extends GraphicsProgram {
 		label = new GLabel(message);
 		label.setFont("SansSerif-28");
 		label.setColor(color);
-		add(label,(getWidth()-label.getWidth())/2,(getHeight()+label.getAscent())/2);		
+		add(label,(WIDTH-label.getWidth())/2,(HEIGHT+label.getAscent())/2);		
 	}
 	
 	
@@ -129,6 +129,7 @@ public class Breakout extends GraphicsProgram {
  * @param row number of the brick row
  * */	
 	private void buildLayer(int row){
+		
 			/*Calculate the y coordinate of the row*/	
 			double y= BRICK_Y_OFFSET + row*(BRICK_HEIGHT+BRICK_SEP);
 			
@@ -137,7 +138,7 @@ public class Breakout extends GraphicsProgram {
 			 * the layer such that the layer is centered on the screen
 			 */
 			double setupWidth = (NBRICKS_PER_ROW*BRICK_WIDTH)+((NBRICKS_PER_ROW-1)*BRICK_SEP);
-			double xOffset = (getWidth()-setupWidth)/2;
+			double xOffset = (WIDTH-setupWidth)/2;
 				
 			Color color;
 			/*Calculate the brick color*/
@@ -161,7 +162,8 @@ public class Breakout extends GraphicsProgram {
 				color  = Color.BLACK;
 				break;
 		}
-			
+		
+			//Create bricks in a row
 			for (int i=0;i<NBRICKS_PER_ROW;i++){
 				double x = xOffset+i*(BRICK_WIDTH+BRICK_SEP);
 				createFilledRect(x,y,BRICK_WIDTH,BRICK_HEIGHT,color);
