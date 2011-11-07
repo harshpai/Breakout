@@ -90,12 +90,10 @@ public class Breakout extends GraphicsProgram {
 			double xOffset = (getWidth()-setupWidth)/2;
 			
 			add(new GLabel("x="+xOffset+" width="+getWidth()+" setupWidth"+setupWidth+"bwidth="+BRICK_WIDTH,50,200));
-			
-			
+						
 			for (int i=0;i<NBRICKS_PER_ROW;i++){
 				double x = xOffset+i*(BRICK_WIDTH+BRICK_SEP);
 				buildBrick(x,y,row);
-				add(new GLabel("start="+x,50,250+10*i));
 			}
 		}
 		
