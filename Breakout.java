@@ -102,8 +102,14 @@ public class Breakout extends GraphicsProgram {
 		double x = (WIDTH-PADDLE_WIDTH)/2;
 		double y = HEIGHT -PADDLE_HEIGHT-PADDLE_Y_OFFSET;
 		
-		createFilledRect(x, y, PADDLE_WIDTH, PADDLE_HEIGHT, Color.BLACK);
+		paddle=createFilledRect(x, y, PADDLE_WIDTH, PADDLE_HEIGHT, Color.BLACK);
 		
+	}
+	
+	
+	private void MouseMove(MouseEvent e){
+		
+		paddle.setLocation(0, e.getY());
 	}
 	
 /**
@@ -154,7 +160,8 @@ public class Breakout extends GraphicsProgram {
 				//The bricks layer has an offset on the left side
 				double x = xOffset+i*(BRICK_WIDTH+BRICK_SEP);
 				
-				createFilledRect(x,y,BRICK_WIDTH,BRICK_HEIGHT,color);
+				//Adds the brick to the canvas
+				add(createFilledRect(x,y,BRICK_WIDTH,BRICK_HEIGHT,color));
 				
 			}
 		}
@@ -188,16 +195,20 @@ public class Breakout extends GraphicsProgram {
  * @param width width of the rectangle
  * @param height height of the rectangle
  * @param color fill color of the rectangle
+ * @return rect rectangle with specified attributes
  * */	
-	private void createFilledRect(double x,double y, double width, double height, Color color){
+	private GRect createFilledRect(double x,double y, double width, double height, Color color){
 			
 			GRect rect =new GRect(x, y, width, height);
 			rect.setFilled(true);
 			rect.setFillColor(color);						
-			add(rect);
+			return rect;
 			
 		}
 	
 /**Displays messages to the user*/	
 	private GLabel label ;
+	
+/**Paddle rectangle*/
+	private GRect paddle
 }
