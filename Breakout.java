@@ -60,12 +60,15 @@ public class Breakout extends GraphicsProgram {
 /* Method: run() */
 /** Runs the Breakout program. */
 	public void run() {
-		/* You fill this in, along with any subsidiary methods */
+		
 		setupBricks();
+		
+		add(new GLabel("Click to Server",200,200));
 		
 	}
 
 	
+/** Provides the intial brick setup for the breakout game */
 	private void setupBricks(){
 		
 		for (int i=0;i<NBRICK_ROWS;i++){
@@ -88,8 +91,6 @@ public class Breakout extends GraphicsProgram {
 			 */
 			double setupWidth = (NBRICKS_PER_ROW*BRICK_WIDTH)+((NBRICKS_PER_ROW-1)*BRICK_SEP);
 			double xOffset = (getWidth()-setupWidth)/2;
-			
-			add(new GLabel("x="+xOffset+" width="+getWidth()+" setupWidth"+setupWidth+"bwidth="+BRICK_WIDTH,50,200));
 						
 			for (int i=0;i<NBRICKS_PER_ROW;i++){
 				double x = xOffset+i*(BRICK_WIDTH+BRICK_SEP);
@@ -98,9 +99,10 @@ public class Breakout extends GraphicsProgram {
 		}
 		
 	/**
-	 * Builds a brick
+	 * Builds a colored brick
 	 * @param x x coordinate of the brick
 	 * @param y y coordinate of the bricks layer
+	 * @param row row number of the brick - used to color brick
 	 * */	
 		private void buildBrick(double x,double y,int row){
 			GRect brick =new GRect(x, y, BRICK_WIDTH, BRICK_HEIGHT);
