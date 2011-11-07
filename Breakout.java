@@ -58,7 +58,7 @@ public class Breakout extends GraphicsProgram {
 	private static final int NTURNS = 3;
 	
 /** Enables mouse listeners in the game*/	
-	public void inti(){
+	public void init(){
 		addMouseListeners();		
 	}
 
