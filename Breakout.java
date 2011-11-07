@@ -63,7 +63,9 @@ public class Breakout extends GraphicsProgram {
 		
 		setupBricks();
 		
-		add(new GLabel("Click to Server",200,200));
+		GLabel label = new GLabel("Click to Serve!");
+		label.setFont("SansSerif-28");
+		add(label,(getWidth()-label.getWidth())/2,(getHeight()-label.getAscent())/2);
 		
 	}
 
