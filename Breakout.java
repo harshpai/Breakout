@@ -57,8 +57,19 @@ public class Breakout extends GraphicsProgram {
 /** Number of turns */
 	private static final int NTURNS = 3;
 	
+/** Color of brick layers */	
+	private static final int RED_ROW = 0;
+	private static final int ORANGE_ROW = 1;
+	private static final int YELLOW_ROW = 2;
+	private static final int GREEN_ROW = 3;
+	private static final int CYAN_ROW = 4;
+	
+/** Number of brick layers with same color*/	
+	private static final int SAME_COLOR_ROWS =2;
+	
 /** Enables mouse listeners in the game*/	
 	public void init(){
+		
 		addMouseListeners();		
 	}
 
@@ -180,16 +191,16 @@ public class Breakout extends GraphicsProgram {
  * @return color color of the brick row
  * */	
 	private Color getRowColor(int numRow){
-		switch (numRow/2){
-		case 0:
+		switch (numRow/SAME_COLOR_ROWS){
+		case RED_ROW:
 			return Color.RED;			
-		case 1:
+		case ORANGE_ROW:
 			return Color.ORANGE;
-		case 2:
+		case YELLOW_ROW:
 			return Color.YELLOW;
-		case 3:
+		case GREEN_ROW:
 			return Color.GREEN;
-		case 4:
+		case CYAN_ROW:
 			return Color.CYAN;			
 		default:
 			return Color.BLACK;
