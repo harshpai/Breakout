@@ -66,16 +66,20 @@ public class Breakout extends GraphicsProgram {
 /** Runs the Breakout program. */
 	public void run() {
 		
+		/*Initial setup of the game: bricks and paddle*/
 		setupBricks();
 		setupPaddle();
 		
+		/*Display a message to the user to start the game*/
 		showLabel("Click to Serve!",Color.BLACK);
 		
 		//Wait for the user to serve
 		waitForClick();
-				
+
+		//The game begins : Remove messages from the screen
 		remove(label);
 		
+		//The game ends: Display appropriate win or loss message 
 		if(hasWon()){
 			showLabel("You win!!!",Color.GREEN);
 		}
@@ -128,48 +132,55 @@ public class Breakout extends GraphicsProgram {
  * Builds a Layer one brick at a time
  * @param row number of the brick row
  * */	
-	private void buildLayer(int row){
+	private void buildLayer(int numRow){
 		
 			/*Calculate the y coordinate of the row*/	
-			double y= BRICK_Y_OFFSET + row*(BRICK_HEIGHT+BRICK_SEP);
+			double y= BRICK_Y_OFFSET + numRow*(BRICK_HEIGHT+BRICK_SEP);
 			
 			/*
 			 * Calculates the x coordinate of the first brick in
 			 * the layer such that the layer is centered on the screen
 			 */
-			double setupWidth = (NBRICKS_PER_ROW*BRICK_WIDTH)+((NBRICKS_PER_ROW-1)*BRICK_SEP);
-			double xOffset = (WIDTH-setupWidth)/2;
+			double rowWidth = (NBRICKS_PER_ROW*BRICK_WIDTH)+((NBRICKS_PER_ROW-1)*BRICK_SEP);
+			double xOffset = (WIDTH-rowWidth)/2;
 				
-			Color color;
+			
 			/*Calculate the brick color*/
-			switch (row/2){
-			case 0:
-				color  = Color.RED;
-				break;
-			case 1:
-				color  = Color.ORANGE;
-				break;
-			case 2:
-				color  = Color.YELLOW;
-				break;
-			case 3:
-				color  = Color.GREEN;
-				break;
-			case 4:
-				color  = Color.CYAN;
-				break;
-			default:
-				color  = Color.BLACK;
-				break;
-		}
+			Color color = getRowColor(numRow);			
 		
 			//Create bricks in a row
 			for (int i=0;i<NBRICKS_PER_ROW;i++){
+				
+				//The bricks layer has an offset on the left side
 				double x = xOffset+i*(BRICK_WIDTH+BRICK_SEP);
+				
 				createFilledRect(x,y,BRICK_WIDTH,BRICK_HEIGHT,color);
+				
 			}
 		}
 		
+/**
+ * Returns color of the brick row based on row number
+ * @param numRow number of the brick row
+ * @return color color of the brick row
+ * */	
+	private Color getRowColor(int numRow){
+		switch (numRow/2){
+		case 0:
+			return Color.RED;			
+		case 1:
+			return Color.ORANGE;
+		case 2:
+			return Color.YELLOW;
+		case 3:
+			return Color.GREEN;
+		case 4:
+			return Color.CYAN;			
+		default:
+			return Color.BLACK;
+		}
+	}
+	
 /**
  * Creates a filled rectangle with specified dimensions
  * @param x x coordinate of the rectangle
