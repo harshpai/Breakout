@@ -90,7 +90,7 @@ public class Breakout extends GraphicsProgram {
 			double x = (getWidth()-(bricks*BRICK_WIDTH)-((bricks+1)*BRICK_SEP))/2;
 			
 			for (int i=0;i<bricks;i++){
-				buildBrick(x+i*(BRICK_WIDTH+BRICK_SEP),y,row);
+				buildBrick(x+BRICK_SEP+i*(BRICK_WIDTH+BRICK_SEP),y,row);
 			}
 		}
 		
