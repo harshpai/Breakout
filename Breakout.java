@@ -59,14 +59,14 @@ public class Breakout extends GraphicsProgram {
 	
 /** Enables mouse listeners in the game*/	
 	public void init(){
-				
+		addMouseListeners();		
 	}
 
 /* Method: run() */
 /** Runs the Breakout program. */
 	public void run() {
 		
-		addMouseListeners();
+		
 		/*Initial setup of the game: bricks and paddle*/
 		setupBricks();
 		setupPaddle();
@@ -91,7 +91,7 @@ public class Breakout extends GraphicsProgram {
 		//return true;
 	}
 	
-/**Displays paddle at the center bottom of the screen*/
+/**Displays paddle at the bottom center of the screen*/
 	private void setupPaddle(){
 		
 		//Calculate paddle position
@@ -104,7 +104,7 @@ public class Breakout extends GraphicsProgram {
 	}
 	
 	
-/**Called on mouse move to move the paddle using mouse*/
+/**Called on mouse move to move the paddle*/
 	public void mouseMoved(MouseEvent e){
 		
 		//Screen border coordinates
