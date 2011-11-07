@@ -116,6 +116,7 @@ public class Breakout extends GraphicsProgram {
 		if(e.getX()<(WIDTH-PADDLE_WIDTH)){
 			double lastX = paddle.getLocation().getX();
 			paddle.move(e.getX()-lastX,0);
+			remove(label);
 			showLabel("pos "+lastX, Color.BLACK);
 		}
 	}
