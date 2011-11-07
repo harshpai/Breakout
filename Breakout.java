@@ -214,7 +214,7 @@ public class Breakout extends GraphicsProgram {
 			
 		}
 	
-/**Displays messages to the user*/	
+/**Label is used to display messages to the user*/	
 	private GLabel label ;
 	
 /**Paddle rectangle*/
