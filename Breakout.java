@@ -186,7 +186,7 @@ public class Breakout extends GraphicsProgram {
         		
         		ball.move(0, -2*diff);
         		
-        		showLabel("diff: "+diff, Color.BLACK);
+        		showLabel("diff: "+diff+"paddle Y "+paddle.getY()+"ball Y "+ballLowerY, Color.BLACK);
         		waitForClick();
         		remove(label);
         	}
