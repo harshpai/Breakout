@@ -168,11 +168,29 @@ public class Breakout extends GraphicsProgram {
     private boolean checkForCollision(){
         GObject collider = getCollidingObject();
         
+        //ball bounces off the paddle
         if(collider == paddle){
-            vy=-Math.abs(vy) ;
+        	
+        	//Y coordinate of the bottom of ball
+        	double ballLowerY = ball.getY()+2*BALL_RADIUS;
+        	
+        	//Y coordinate of middle of paddle;
+        	double paddleMiddleY =paddle.getY()+PADDLE_HEIGHT/2 ; 
+        	
+        	// bounce the ball only if it hasn't digged more than 
+        	// half the paddle height into the paddle
+        	if(ballLowerY<paddleMiddleY){
+        		
+        		vy=-vy ;
+        		double diff = paddle.getY()-ballLowerY;
+        		
+        		paddle.move(0, -2*diff);
+        	}
             
-            //move ball up
+            
+            
         }
+        //ball collides with a brick
         else if (collider != null){
             
             vy=-vy;
@@ -181,10 +199,9 @@ public class Breakout extends GraphicsProgram {
             
             NBRICKS_LEFT_IN_GAME--;            
                        
-            //Game ends : Player has won
-            if(NBRICKS_LEFT_IN_GAME==0) {
-                return true;
-            }
+            //Game ends : Player wins
+            if(NBRICKS_LEFT_IN_GAME==0) return true;
+            
         }
         
         return false;
