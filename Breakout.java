@@ -123,7 +123,9 @@ public class Breakout extends GraphicsProgram {
         }
         else{
             // Player has finished all turns, display You lose
-            showLabel("You lose",Color.RED);            
+            showLabel("You lose",Color.RED);         
+            waitForClick();
+            play();
         }
         
 
