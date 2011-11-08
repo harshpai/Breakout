@@ -188,6 +188,7 @@ public class Breakout extends GraphicsProgram {
         		
         		showLabel("diff: "+diff, Color.BLACK);
         		waitForClick();
+        		remove(label);
         	}
             
             
