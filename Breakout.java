@@ -108,7 +108,7 @@ public class Breakout extends GraphicsProgram {
             //Wait for the user to serve
             waitForClick();
 
-            //The game begins : Remove messages from the screen
+            // The game begins : Remove messages from the screen
             remove(label);
             
             if(playTurn()){
@@ -118,11 +118,11 @@ public class Breakout extends GraphicsProgram {
         }
         
         if(hasWon){
-            //User has won game ends
+            // Player wins game ends
             showLabel("You win!",Color.GREEN);  
         }
         else{
-            //User has finished all turns, display You lose
+            // Player has finished all turns, display You lose
             showLabel("You lose",Color.RED);            
         }
         
@@ -146,7 +146,7 @@ public class Breakout extends GraphicsProgram {
         
             ball.move(vx, vy);
             
-            //Check if player has won
+            // Check if player has won
             if(checkForCollision())
             {
                 remove(ball);
@@ -175,7 +175,7 @@ public class Breakout extends GraphicsProgram {
         	double ballLowerY = ball.getY()+2*BALL_RADIUS;
         	
         	//Y coordinate of middle of paddle;
-        	double paddleMiddleY =paddle.getY()+PADDLE_HEIGHT/2 ; 
+        	double paddleMiddleY =paddle.getY()+PADDLE_HEIGHT ; 
         	
         	// bounce the ball only if it hasn't digged more than 
         	// half the paddle height into the paddle
