@@ -67,7 +67,7 @@ public class Breakout extends GraphicsProgram {
 /** Number of brick layers with same color */    
     private static final int ROWS_PER_COLOR =2;
     
-/** Initial Velocity and acceleration of the ball */
+/** Initial velocities of the ball */
     private static final double VMAX = 3.0;
     private static final double VMIN = 1.0;
 
@@ -103,14 +103,14 @@ public class Breakout extends GraphicsProgram {
         //Start turns
         for (int i=0 ;i<NTURNS;i++){
         	
-            /*Display a message to the user to start the game*/
+            /* Extension: Display a message to the user to start the game */
             showLabel("Click to serve!",Color.BLACK);
             
             // Wait for the user to serve
             waitForClick();
 
-            // The game begins 
-            // Remove messages from the screen
+            // The game begins. 
+            // Remove messages from the screen.
             remove(label);
             
             if(playTurn()){
@@ -120,6 +120,7 @@ public class Breakout extends GraphicsProgram {
             }    
         }
         
+        // Extension: Show result to the player
         showResult(hasWon);
 
     }
@@ -150,18 +151,20 @@ public class Breakout extends GraphicsProgram {
 
         createBall();
         
-        //initialize velocities of the ball
+        // Initialize x velocity of the ball
         vx = rgen.nextDouble(VMIN,VMAX);
         if(rgen.nextBoolean(0.5)) vx=-vx;
         
-        //For every new ball set paddleHits to 0
+        // Extension: Add kicker
+        // For every new ball set paddleHits to 0
         paddleHits=0;
         
         while (bounce()){
         
-            ball.move(vx, vy);
-            
-            // all bricks destroyed 
+            // Extension: Add kicker
+            checkKicker();
+        	
+            // Check if all bricks are destroyed 
             if(checkForCollision())
             {
                 remove(ball);
@@ -169,6 +172,7 @@ public class Breakout extends GraphicsProgram {
             }   
             
             pause(DELAY);
+            ball.move(vx, vy);
         }
         
         return false;
@@ -185,7 +189,8 @@ public class Breakout extends GraphicsProgram {
     	// Get the colliding object
         GObject collider = getCollidingObject();
         
-        /** Load file containing bounce sound */    
+        /** Extension: play sound
+         * Load file containing bounce sound */    
         AudioClip bounceClip = MediaTools.loadAudioClip("bounce.au");
         
         // Ball bounces off the paddle
@@ -204,7 +209,12 @@ public class Breakout extends GraphicsProgram {
         		        		
         		double diff = paddle.getY()-ballLowerY;
         		vy=-vy ;
+        		
+        		// Assume that the ball will move an equal amount 
+        		// in the same direction as it would have otherwise
         		ball.move(0, 2*diff);
+        		
+        		//Extension: play sound
         		bounceClip.play();
         	}
             
@@ -214,11 +224,14 @@ public class Breakout extends GraphicsProgram {
             
             vy=-vy;
          
+            // Remove brick and decrement brick counter
             remove(collider);
+            NBRICKS_LEFT_IN_GAME--;
+            
+            // Extension: play sound
             bounceClip.play();
-            NBRICKS_LEFT_IN_GAME--;            
                        
-            //Game ends : Player wins
+            // Game over: Player wins
             if(NBRICKS_LEFT_IN_GAME==0) return true;
 
         }
@@ -264,55 +277,48 @@ public class Breakout extends GraphicsProgram {
         
         double diff;
         
-        //check for collision with floor
+        // Check for collision with floor
         if( ball.getY()>(HEIGHT-2*BALL_RADIUS)){
             
             remove(ball);
             return false;
             
         }
-        //check for collision with ceiling
+        // Check for collision with ceiling
         else if(ball.getY()<0){
             
-            //reverse ball's Y velocity
+            // Reverse ball's Y velocity
             vy=-vy;
             
-            //assume bounce will move an amount in the opposite direction
-            //equal to the amount it would have traveled otherwise
+            // Assume bounce will move an amount in the opposite direction
+            // equal to the amount it would have traveled otherwise
             diff = ball.getY();
             ball.move(0,-2*diff);   
-            
-            //Extension: Add kicker
-            checkKicker();
-            
+                        
         }        
-        //check for collision with right edge
+        // Check for collision with right edge
         else if( ball.getX()>(WIDTH-2*BALL_RADIUS)){
             
-            // reverse ball's X velocity
+            // Reverse ball's X velocity
             vx=-vx;
             
-            //assume bounce will move an amount in the opposite direction
-            //equal to the amount it would have traveled otherwise
+            // Assume bounce will move an amount in the opposite direction
+            // equal to the amount it would have traveled otherwise
             diff = ball.getX()-(WIDTH - 2*BALL_RADIUS);
             ball.move(-2*diff,0);
-            
-            //Extension: Add kicker
-            checkKicker();
+                        
         }
-        //check for collision with left edge
+        // Check for collision with left edge
         else if( ball.getX()<0){
             
-            // reverse ball's X velocity
+            // Reverse ball's X velocity
             vx=-vx;
             
-            //assume bounce will move an amount in the opposite direction
-            //equal to the amount it would have traveled otherwise
+            // Assume bounce will move an amount in the opposite direction
+            // equal to the amount it would have traveled otherwise
             diff = ball.getX();
             ball.move(-2*diff,0);
             
-            //Extension: Add kicker
-            checkKicker();
         }
         
         return true;
@@ -330,7 +336,12 @@ public class Breakout extends GraphicsProgram {
     
 /** Creates a ball at the center of the screen */
     private void createBall(){
-        ball = new GOval(WIDTH/2-BALL_RADIUS,HEIGHT/2-BALL_RADIUS,2*BALL_RADIUS,2*BALL_RADIUS);
+    	
+    	//x and y coordinate of the ball
+    	double x = WIDTH/2-BALL_RADIUS;
+    	double y = HEIGHT/2-BALL_RADIUS;
+    	
+        ball = new GOval(x,y,2*BALL_RADIUS,2*BALL_RADIUS);
         ball.setFilled(true);
         add(ball);
     }
