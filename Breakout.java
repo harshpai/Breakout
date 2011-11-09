@@ -230,6 +230,9 @@ public class Breakout extends GraphicsProgram {
             
             // Extension: play sound
             bounceClip.play();
+            
+            // Extension: update score
+            updateScore(collider);
                        
             // Game over: Player wins
             if(NBRICKS_LEFT_IN_GAME==0) return true;
@@ -239,6 +242,11 @@ public class Breakout extends GraphicsProgram {
         return false;
     }
     
+/**  */
+    private void updateScore(GObject collider){
+    	
+    	//switch (collider.get)
+    }
     
 /** Checks the four corners of the rectangle binding the ball
  * for bricks and paddle
