@@ -326,6 +326,9 @@ public class Breakout extends GraphicsProgram {
         if (paddleHits==7){
         	vx*=2;
         }
+        
+        add(new GLabel("Vx "+vx, WIDTH/2, paddle.getY()+PADDLE_HEIGHT))
+        
     }
     
 /** Creates a ball at the center of the screen */
