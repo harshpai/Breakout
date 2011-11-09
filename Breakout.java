@@ -70,11 +70,7 @@ public class Breakout extends GraphicsProgram {
 /** Initial Velocity and acceleration of the ball */
     private static final double VMAX = 3.0;
     private static final double VMIN = 1.0;
-    private static final double ACCELERATION = 3.0;
-    
-/**  */    
-    private static final int NEXT_LEVEL_SPEED = 7;
-    
+
 /** Animation cycle delay */
     private static final int DELAY = 10;
     
@@ -95,6 +91,7 @@ public class Breakout extends GraphicsProgram {
     private void setup(){
         
         setupBricks();
+        
         setupPaddle();
     }
     
@@ -105,6 +102,7 @@ public class Breakout extends GraphicsProgram {
         
         //Start turns
         for (int i=0 ;i<NTURNS;i++){
+        	
             /*Display a message to the user to start the game*/
             showLabel("Click to serve!",Color.BLACK);
             
@@ -115,7 +113,6 @@ public class Breakout extends GraphicsProgram {
             // Remove messages from the screen
             remove(label);
             
-            
             if(playTurn()){
          
             	hasWon  = true;
@@ -123,6 +120,13 @@ public class Breakout extends GraphicsProgram {
             }    
         }
         
+        showResult(hasWon);
+
+    }
+   
+/** Displays win or loss to the player */    
+    private void showResult(boolean hasWon){
+    	
         // Show messages indicating win or loss
         if(hasWon){
         	
@@ -134,14 +138,8 @@ public class Breakout extends GraphicsProgram {
             // Player has finished all turns, 
         	// display 'You lose' message
             showLabel("You lose",Color.RED);         
-            
-            /*waitForClick();
-            removeAll();
-            run();*/
-            
         }
     }
-    
     
 /**  
  * plays a single turn of the game
