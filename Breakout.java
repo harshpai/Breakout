@@ -105,11 +105,13 @@ public class Breakout extends GraphicsProgram {
             /*Display a message to the user to start the game*/
             showLabel("Click to serve!",Color.BLACK);
             
-            //Wait for the user to serve
+            // Wait for the user to serve
             waitForClick();
 
-            // The game begins : Remove messages from the screen
+            // The game begins 
+            // Remove messages from the screen
             remove(label);
+            
             
             if(playTurn()){
                 hasWon  = true;
@@ -117,16 +119,21 @@ public class Breakout extends GraphicsProgram {
             }    
         }
         
+        // Show messages indicating win or loss
         if(hasWon){
+        	
             // Player wins game ends
             showLabel("You win!",Color.GREEN);  
         }
         else{
-            // Player has finished all turns, display You lose
+        	
+            // Player has finished all turns, 
+        	// display 'You lose' message
             showLabel("You lose",Color.RED);         
             waitForClick();
             removeAll();
             run();
+            
         }
         
 
@@ -136,8 +143,6 @@ public class Breakout extends GraphicsProgram {
 /**  plays a single turn of the game*/    
     private boolean playTurn(){
 
-        boolean hasWon = false;
-        
         createBall();
         
         //initialize velocities of the ball
@@ -153,15 +158,14 @@ public class Breakout extends GraphicsProgram {
             if(checkForCollision())
             {
                 remove(ball);
-                hasWon = true;
-                break;
+                return true;
             }
                 
             
             pause(DELAY);
         }
         
-        return hasWon;
+        return false;
     }
     
     
@@ -177,24 +181,19 @@ public class Breakout extends GraphicsProgram {
         	//Y coordinate of the bottom of ball
         	double ballLowerY = ball.getY()+2*BALL_RADIUS;
         	
-        	//Y coordinate of middle of paddle;
-        	double paddleMiddleY =paddle.getY()+PADDLE_HEIGHT ; 
+        	//Y coordinate of the lower edge of paddle;
+        	double paddleLowerY =paddle.getY()+PADDLE_HEIGHT ; 
         	
-        	// bounce the ball only if it hasn't digged more than 
-        	// half the paddle height into the paddle
-        	if(ballLowerY<paddleMiddleY){
-        		
-        		vy=-vy ;
+        	// bounce the ball only if it hasn't passed the 
+        	// lower edge of the paddle. This ensures that ball
+        	// doesn't get glued to the paddle
+        	if(ballLowerY<paddleLowerY){
+        		        		
         		double diff = paddle.getY()-ballLowerY;
-        		
+        		vy=-vy ;
         		ball.move(0, 2*diff);
         		
-        		showLabel("diff: "+diff+"paddle Y "+paddle.getY()+"ball Y "+ballLowerY, Color.BLACK);
-        		waitForClick();
-        		remove(label);
         	}
-            
-            
             
         }
         //ball collides with a brick
