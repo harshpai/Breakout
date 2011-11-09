@@ -64,6 +64,9 @@ public class Breakout extends GraphicsProgram {
     private static final int GREEN_ROW = 3;
     private static final int CYAN_ROW = 4;
     
+/** Score for breaking a red brick */    
+    private static final int SCORE = 5;
+    
 /** Number of brick layers with same color */    
     private static final int ROWS_PER_COLOR =2;
     
@@ -242,10 +245,18 @@ public class Breakout extends GraphicsProgram {
         return false;
     }
     
-/**  */
+/** 
+ * Keeps score by updating label below the paddle
+ * @param collider the colliding brick
+ *  */
     private void updateScore(GObject collider){
     	
-    	//switch (collider.get)
+    	if(collider.getColor() ==  Color.RED) scoreBoard.setLabel("Score:"+RED_ROW+1);
+    	else if(collider.getColor() ==  Color.ORANGE) scoreBoard.setLabel("Score:"+ORANGE_ROW+1);
+    	else if(collider.getColor() ==  Color.YELLOW) scoreBoard.setLabel("Score:"+YELLOW_ROW+1);
+    	else if(collider.getColor() ==  Color.GREEN) scoreBoard.setLabel("Score:"+GREEN_ROW+1);
+    	else if(collider.getColor() ==  Color.CYAN) scoreBoard.setLabel("Score:"+CYAN_ROW+1);
+    	    
     }
     
 /** Checks the four corners of the rectangle binding the ball
@@ -364,6 +375,10 @@ public class Breakout extends GraphicsProgram {
         paddle=createFilledRect(x, y, PADDLE_WIDTH, PADDLE_HEIGHT, Color.BLACK);
         
         add(paddle);        
+        
+        // Extension: add score board below the paddle
+        scoreBoard = new GLabel("Score:0");
+        add(scoreBoard,x,HEIGHT);
     }
     
     
@@ -484,7 +499,7 @@ public class Breakout extends GraphicsProgram {
     private GLabel label;
     
 /** Instance variable score is used to display score to the user */
-    private GLabel score;
+    private GLabel scoreBoard;
     
 /** private instance variable paddle rectangle */
     private GRect paddle;
