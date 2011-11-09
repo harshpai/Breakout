@@ -142,7 +142,7 @@ public class Breakout extends GraphicsProgram {
     }
     
 /**  
- * plays a single turn of the game
+ * Plays a single turn of the game
  * @return returns true if player wins,
  * returns false otherwise
  * */    
@@ -460,7 +460,7 @@ public class Breakout extends GraphicsProgram {
             
         }
     
-/** Label is used to display messages to the user */    
+/** Instance variable label is used to display messages to the user */    
     private GLabel label ;
     
 /** private instance variable paddle rectangle */
@@ -476,10 +476,10 @@ public class Breakout extends GraphicsProgram {
     private double vx;
     private double vy = VMAX;
     
-/** Number of bricks remaining in the game */    
+/** Instance variable Number of bricks remaining in the game */    
     private int NBRICKS_LEFT_IN_GAME = NBRICK_ROWS * NBRICKS_PER_ROW;
     
-/** Number of paddle hits  */    
+/** Instance variable to count the number of paddle hits  */    
     private int paddleHits;
 
 } 
