@@ -473,6 +473,7 @@ public class Breakout extends GraphicsProgram {
     private GRect createFilledRect(double x,double y, double width, double height, Color color){
             
             GRect rect =new GRect(x, y, width, height);
+            rect.setColor(color);
             rect.setFilled(true);
             rect.setFillColor(color);                        
             return rect;
