@@ -125,7 +125,8 @@ public class Breakout extends GraphicsProgram {
             // Player has finished all turns, display You lose
             showLabel("You lose",Color.RED);         
             waitForClick();
-            play();
+            removeAll();
+            run();
         }
         
 
@@ -148,7 +149,7 @@ public class Breakout extends GraphicsProgram {
         
             ball.move(vx, vy);
             
-            // Check if player has won
+            // all bricks destroyed 
             if(checkForCollision())
             {
                 remove(ball);
