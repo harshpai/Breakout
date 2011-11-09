@@ -72,6 +72,9 @@ public class Breakout extends GraphicsProgram {
     private static final double VMIN = 1.0;
     private static final double ACCELERATION = 3.0;
     
+/**  */    
+    private static final int NEXT_LEVEL_SPEED = 7;
+    
 /** Animation cycle delay */
     private static final int DELAY = 20;
     
@@ -212,7 +215,9 @@ public class Breakout extends GraphicsProgram {
                        
             //Game ends : Player wins
             if(NBRICKS_LEFT_IN_GAME==0) return true;
-            
+
+            //Add kicker : more than 7 paddle increase speed
+            if((NBRICK_ROWS*NBRICKS_PER_ROW)-NBRICKS_LEFT_IN_GAME==NEXT_LEVEL_SPEED) vx*=2;
         }
         
         return false;
