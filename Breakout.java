@@ -327,8 +327,10 @@ public class Breakout extends GraphicsProgram {
         	vx*=2;
         }
         
-        showLabel("vx "+vx, Color.BLACK);
         
+        showLabel("vx "+vx, Color.BLACK);
+        waitForClick();
+        remove(label);
     }
     
 /** Creates a ball at the center of the screen */
