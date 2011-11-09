@@ -127,7 +127,7 @@ public class Breakout extends GraphicsProgram {
         if(hasWon){
         	
             // Player wins game ends
-            showLabel("You win!",Color.GREEN);  
+            showLabel("You win!",Color.RED);  
         }
         else{
         	
@@ -181,7 +181,12 @@ public class Breakout extends GraphicsProgram {
  * returns false otherwise
  * */    
     private boolean checkForCollision(){
+    	
+    	// Get the colliding object
         GObject collider = getCollidingObject();
+        
+        /** Load file containing bounce sound */    
+        AudioClip bounceClip = MediaTools.loadAudioClip("bounce.au");
         
         // Ball bounces off the paddle
         if(collider == paddle){
@@ -211,14 +216,11 @@ public class Breakout extends GraphicsProgram {
          
             remove(collider);
             bounceClip.play();
-            
             NBRICKS_LEFT_IN_GAME--;            
                        
             //Game ends : Player wins
             if(NBRICKS_LEFT_IN_GAME==0) return true;
 
-            //Add kicker : more than 7 paddle increase speed
-            if((NBRICK_ROWS*NBRICKS_PER_ROW)-NBRICKS_LEFT_IN_GAME==NEXT_LEVEL_SPEED) vx*=2;
         }
         
         return false;
@@ -278,7 +280,10 @@ public class Breakout extends GraphicsProgram {
             //assume bounce will move an amount in the opposite direction
             //equal to the amount it would have traveled otherwise
             diff = ball.getY();
-            ball.move(0,-2*diff);            
+            ball.move(0,-2*diff);   
+            
+            //Extension: Add kicker
+            checkKicker();
             
         }        
         //check for collision with right edge
@@ -291,6 +296,9 @@ public class Breakout extends GraphicsProgram {
             //equal to the amount it would have traveled otherwise
             diff = ball.getX()-(WIDTH - 2*BALL_RADIUS);
             ball.move(-2*diff,0);
+            
+            //Extension: Add kicker
+            checkKicker();
         }
         //check for collision with left edge
         else if( ball.getX()<0){
@@ -302,11 +310,23 @@ public class Breakout extends GraphicsProgram {
             //equal to the amount it would have traveled otherwise
             diff = ball.getX();
             ball.move(-2*diff,0);
+            
+            //Extension: Add kicker
+            checkKicker();
         }
         
         return true;
     }
     
+/** Doubles the horizontal velocity on the
+ * seventh time the ball hits the paddle
+ *  */    
+    private void checkKicker(){
+        paddleHits++;
+        if (paddleHits==7){
+        	vx*=2;
+        }
+    }
     
 /** Creates a ball at the center of the screen */
     private void createBall(){
@@ -459,6 +479,7 @@ public class Breakout extends GraphicsProgram {
 /** Number of bricks remaining in the game */    
     private int NBRICKS_LEFT_IN_GAME = NBRICK_ROWS * NBRICKS_PER_ROW;
     
-/** Load file containing bounce sound */    
-    AudioClip bounceClip = MediaTools.loadAudioClip("bounce.au");
+/** Number of paddle hits  */    
+    private int paddleHits;
+    
 } 
