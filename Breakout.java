@@ -95,7 +95,7 @@ public class Breakout extends GraphicsProgram {
         setupPaddle();
     }
     
-/**Start playing*/    
+/** Start playing */    
     private void play(){
 
         boolean hasWon = false;
@@ -114,7 +114,8 @@ public class Breakout extends GraphicsProgram {
             
             
             if(playTurn()){
-                hasWon  = true;
+         
+            	hasWon  = true;
                 break;
             }    
         }
@@ -135,12 +136,14 @@ public class Breakout extends GraphicsProgram {
             run();
             
         }
-        
-
     }
     
     
-/**  plays a single turn of the game*/    
+/**  
+ * plays a single turn of the game
+ * @return returns true if player wins,
+ * returns false otherwise
+ * */    
     private boolean playTurn(){
 
         createBall();
@@ -171,22 +174,24 @@ public class Breakout extends GraphicsProgram {
     
 /** Collision with another object reverses y velocity
  * and collision with brick also removes the brick
+ * @return returns true if all bricks have been removed, 
+ * returns false otherwise
  * */    
     private boolean checkForCollision(){
         GObject collider = getCollidingObject();
         
-        //ball bounces off the paddle
+        // Ball bounces off the paddle
         if(collider == paddle){
         	
-        	//Y coordinate of the bottom of ball
+        	// Y coordinate of the bottom of ball
         	double ballLowerY = ball.getY()+2*BALL_RADIUS;
         	
-        	//Y coordinate of the lower edge of paddle;
+        	// Y coordinate of the lower edge of paddle;
         	double paddleLowerY =paddle.getY()+PADDLE_HEIGHT ; 
         	
-        	// bounce the ball only if it hasn't passed the 
+        	// Bounce the ball only if it hasn't passed the 
         	// lower edge of the paddle. This ensures that ball
-        	// doesn't get glued to the paddle
+        	// doesn't get glued to the paddle.
         	if(ballLowerY<paddleLowerY){
         		        		
         		double diff = paddle.getY()-ballLowerY;
@@ -196,7 +201,7 @@ public class Breakout extends GraphicsProgram {
         	}
             
         }
-        //ball collides with a brick
+        // Ball collides with a brick
         else if (collider != null){
             
             vy=-vy;
@@ -245,6 +250,7 @@ public class Breakout extends GraphicsProgram {
     
 /** Determine if collision with floor,ceiling or sides of the screen
  * update velocities and location as appropriate
+ * @return returns false if the ball hits lower edge of screen, returns true otherwise
  * */
     private boolean bounce(){
         
@@ -316,7 +322,7 @@ public class Breakout extends GraphicsProgram {
     }
     
     
-/**Called on mouse move to move the paddle*/
+/** Called on mouse move to move the paddle*/
     public void mouseMoved(MouseEvent e){
         
         //Screen border coordinates
@@ -335,7 +341,8 @@ public class Breakout extends GraphicsProgram {
     
 /**
  * Display the specified message at the center of the screen
- * @param message message to be displayed
+ * @param message Text to the Label
+ * @param color Color of the message font
  * */
     private void showLabel(String message,Color color){
         label = new GLabel(message);
