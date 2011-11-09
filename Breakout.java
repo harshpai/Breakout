@@ -154,7 +154,7 @@ public class Breakout extends GraphicsProgram {
         vx = rgen.nextDouble(VMIN,VMAX);
         if(rgen.nextBoolean(0.5)) vx=-vx;
         
-        //Every new ball set paddleHits to 0
+        //For every new ball set paddleHits to 0
         paddleHits=0;
         
         while (bounce()){
