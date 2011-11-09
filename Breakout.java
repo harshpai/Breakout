@@ -327,10 +327,7 @@ public class Breakout extends GraphicsProgram {
         	vx*=2;
         }
         
-        
-        me= new GLabel("Vx "+vx, WIDTH/2, paddle.getY()+2*PADDLE_HEIGHT);
-        remove(me);
-        add(me);
+        showLabel("vx "+vx, Color.BLACK);
         
     }
     
