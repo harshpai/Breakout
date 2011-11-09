@@ -328,7 +328,7 @@ public class Breakout extends GraphicsProgram {
         }
         
         
-
+        me= new GLabel("Vx "+vx, WIDTH/2, paddle.getY()+2*PADDLE_HEIGHT);
         remove(me);
         add(me);
         
@@ -488,5 +488,5 @@ public class Breakout extends GraphicsProgram {
 /** Number of paddle hits  */    
     private int paddleHits;
     
-    GLabel me = new GLabel("Vx "+vx, WIDTH/2, paddle.getY()+2*PADDLE_HEIGHT);
+    GLabel me;
 } 
