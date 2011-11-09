@@ -472,7 +472,10 @@ public class Breakout extends GraphicsProgram {
         }
     
 /** Instance variable label is used to display messages to the user */    
-    private GLabel label ;
+    private GLabel label;
+    
+/** Instance variable score is used to display score to the user */
+    private GLabel score;
     
 /** private instance variable paddle rectangle */
     private GRect paddle;
