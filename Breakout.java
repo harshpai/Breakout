@@ -156,6 +156,8 @@ public class Breakout extends GraphicsProgram {
         vx = rgen.nextDouble(VMIN,VMAX);
         if(rgen.nextBoolean(0.5)) vx=-vx;
         
+        //Every new ball set paddleHits to 0
+        paddleHits=0;
         
         while (bounce()){
         
@@ -326,11 +328,6 @@ public class Breakout extends GraphicsProgram {
         if (paddleHits==7){
         	vx*=2;
         }
-        
-        
-        showLabel("vx "+vx+"pH "+paddleHits, Color.BLACK);
-        waitForClick();
-        remove(label);
     }
     
 /** Creates a ball at the center of the screen */
@@ -486,6 +483,5 @@ public class Breakout extends GraphicsProgram {
     
 /** Number of paddle hits  */    
     private int paddleHits;
-    
-    GLabel me;
+
 } 
