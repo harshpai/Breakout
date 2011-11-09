@@ -134,9 +134,10 @@ public class Breakout extends GraphicsProgram {
             // Player has finished all turns, 
         	// display 'You lose' message
             showLabel("You lose",Color.RED);         
-            waitForClick();
+            
+            /*waitForClick();
             removeAll();
-            run();
+            run();*/
             
         }
     }
@@ -165,8 +166,7 @@ public class Breakout extends GraphicsProgram {
             {
                 remove(ball);
                 return true;
-            }
-                
+            }   
             
             pause(DELAY);
         }
@@ -200,7 +200,7 @@ public class Breakout extends GraphicsProgram {
         		double diff = paddle.getY()-ballLowerY;
         		vy=-vy ;
         		ball.move(0, 2*diff);
-        		
+        		bounceClip.play();
         	}
             
         }
@@ -210,6 +210,7 @@ public class Breakout extends GraphicsProgram {
             vy=-vy;
          
             remove(collider);
+            bounceClip.play();
             
             NBRICKS_LEFT_IN_GAME--;            
                        
@@ -457,4 +458,7 @@ public class Breakout extends GraphicsProgram {
     
 /** Number of bricks remaining in the game */    
     private int NBRICKS_LEFT_IN_GAME = NBRICK_ROWS * NBRICKS_PER_ROW;
+    
+/** Load file containing bounce sound */    
+    AudioClip bounceClip = MediaTools.loadAudioClip("bounce.au");
 } 
