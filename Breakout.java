@@ -328,7 +328,7 @@ public class Breakout extends GraphicsProgram {
         }
         
         
-        showLabel("vx "+vx, Color.BLACK);
+        showLabel("vx "+vx+"pH "+paddleHits, Color.BLACK);
         waitForClick();
         remove(label);
     }
