@@ -247,7 +247,7 @@ public class Breakout extends GraphicsProgram {
     
 /** 
  * Keeps score by updating label below the paddle
- * @param collider the colliding brick
+ * @param collider the brick that collides with ball
  *  */
     private void updateScore(GObject collider){
     	
@@ -379,7 +379,7 @@ public class Breakout extends GraphicsProgram {
         
         // Extension: add score board below the paddle
         scoreBoard = new GLabel("Score:0");
-        add(scoreBoard,x,HEIGHT);
+        add(scoreBoard,x,y+PADDLE_HEIGHT);
     }
     
     
