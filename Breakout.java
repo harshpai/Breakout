@@ -286,6 +286,7 @@ public class Breakout extends GraphicsProgram {
     		// in the same direction as it would have otherwise
     		ball.move(2*diff, 0);
     	}    	
+    	waitForClick();
     }
     
 /** 
