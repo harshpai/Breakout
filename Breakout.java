@@ -223,7 +223,7 @@ public class Breakout extends GraphicsProgram {
             
         }
         // Ball collides with a brick
-        else if (collider != null){
+        else if (collider != null && collider != scoreBoard){
             
             vy=-vy;
          
