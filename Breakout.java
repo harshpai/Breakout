@@ -373,7 +373,6 @@ public class Breakout extends GraphicsProgram {
  *  */    
     private void checkKicker(){
         paddleHits++;
-        scoreBoard.setLabel("phit"+paddleHits);
         if (paddleHits==7){
         	vx*=2;
         }
