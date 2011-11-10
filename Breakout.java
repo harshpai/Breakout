@@ -297,7 +297,7 @@ public class Breakout extends GraphicsProgram {
     	else if(collider.getColor() ==  Color.GREEN) currentScore += MAXSCORE - GREEN_ROW;
     	else if(collider.getColor() ==  Color.CYAN) currentScore += MAXSCORE - CYAN_ROW;
     	    
-    	scoreBoard.setLabel("Score:"+currentScore);
+    	scoreBoard.setLabel((int)vx+"Score:"+currentScore);
     }
     
 /** Checks the four corners of the rectangle binding the ball
@@ -423,7 +423,7 @@ public class Breakout extends GraphicsProgram {
     }
     
     
-/** Called on mouse move to move the paddle*/
+/** Called on mouse move to move the paddle */
     public void mouseMoved(MouseEvent e){
         
         //Screen border coordinates
@@ -536,10 +536,10 @@ public class Breakout extends GraphicsProgram {
             
         }
     
-/** Instance variable label is used to display messages to the user */    
+/** private instance variable label is used to display messages to the user */    
     private GLabel label;
     
-/** Instance variable score is used to display score to the user */
+/** private instance variable score is used to display score to the user */
     private GLabel scoreBoard;
     
 /** private instance variable paddle rectangle */
@@ -548,20 +548,20 @@ public class Breakout extends GraphicsProgram {
 /** private instance variable ball */    
     private GOval ball;
     
-/** Instance variable random generator to generate vx for the ball and otherwise */   
+/** private instance variable random generator to generate vx for the ball and otherwise */   
     private RandomGenerator rgen = RandomGenerator.getInstance();
     
-/** Instance variable to keep track of the velocity of the ball */
+/** private instance variable to keep track of the velocity of the ball */
     private double vx;
     private double vy = VMAX;
     
-/** Instance variable Number of bricks remaining in the game */    
+/** private instance variable Number of bricks remaining in the game */    
     private int NBRICKS_LEFT_IN_GAME = NBRICK_ROWS * NBRICKS_PER_ROW;
     
-/** Instance variable to count the number of paddle hits  */    
+/** private instance variable to count the number of paddle hits  */    
     private int paddleHits;
     
-/** Instance variable to track score of thr player */
+/** private instance variable to track score of the player */
     private int currentScore = 0;
 
 } 
