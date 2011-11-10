@@ -220,6 +220,9 @@ public class Breakout extends GraphicsProgram {
         		//Extension: play sound
         		bounceClip.play();
         	}
+        	
+        	//Extension: bounce ball in x direction if it hits the paddle edge
+        	bouncePaddleX();
             
         }
         // Ball collides with a brick
@@ -245,9 +248,26 @@ public class Breakout extends GraphicsProgram {
         return false;
     }
     
+/** Bounces ball in x direction if collision 
+ * occurs with the edge of the paddle */    
+    private void bouncePaddleX(){
+    	
+    	// Consider paddle edge to be 10% paddle width on both sides
+    	double leftPaddleX = paddle.getX()+(0.1*PADDLE_WIDTH);
+    	double rightPaddleX = paddle.getX()+(0.9*PADDLE_WIDTH);
+    	
+    	// right and left coordinates of binding rectangle of ball
+    	double leftBallX = ball.getX();
+    	double rightBallX = ball.getX()+2*BALL_RADIUS;
+    	
+    	if((vx>0 && rightBallX < leftPaddleX) || (vx<0 && leftBallX>rightPaddleX))
+    		vx=-vx;
+    	
+    }
+    
 /** 
  * Keeps score by updating label below the paddle
- * @param collider the brick that collides with ball
+ * @param collider the brick that collided with ball
  *  */
     private void updateScore(GObject collider){
     	
