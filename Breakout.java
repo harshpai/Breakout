@@ -256,8 +256,6 @@ public class Breakout extends GraphicsProgram {
  * occurs with the edge of the paddle */    
     private void bouncePaddleX(){
     	
-    	double diff;
-    	
     	// Consider paddle edge to be 15% paddle width on both sides
     	double leftPaddleX = paddle.getX()+(PEDGE*PADDLE_WIDTH);
     	double rightPaddleX = paddle.getX()+((1-PEDGE)*PADDLE_WIDTH);
@@ -266,28 +264,8 @@ public class Breakout extends GraphicsProgram {
     	double leftBallX = ball.getX();
     	double rightBallX = ball.getX()+2*BALL_RADIUS;
     	
-    	if(vx>0 && rightBallX < leftPaddleX) {
-    		
-    		vx=-vx;
-    		
-    		diff=paddle.getX()-rightBallX;
-    		    		
-    		// Assume that the ball will move an equal amount 
-    		// in the same direction as it would have otherwise
-    		ball.move(2*diff, 0);
-    		//waitForClick();
-    	} 
-    	else if(vx<0 && leftBallX>rightPaddleX){
-    		
-    		vx=-vx;
-    		
-    		diff=paddle.getX()+PADDLE_WIDTH-leftBallX;
-    		
-    		// Assume that the ball will move an equal amount 
-    		// in the same direction as it would have otherwise
-    		ball.move(2*diff, 0);
-    		//waitForClick();
-    	}    	
+    	if(vx>0 && rightBallX < leftPaddleX) vx=-vx;
+    	else if(vx<0 && leftBallX>rightPaddleX) vx=-vx; 	
     	
     }
     
