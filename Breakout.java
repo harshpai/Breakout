@@ -281,7 +281,7 @@ public class Breakout extends GraphicsProgram {
     	else if(collider.getColor() ==  Color.GREEN) currentScore += MAXSCORE - GREEN_ROW;
     	else if(collider.getColor() ==  Color.CYAN) currentScore += MAXSCORE - CYAN_ROW;
     	    
-    	scoreBoard.setLabel("phit"+paddleHits+" vx:"+vx+" vy"+vy+"Score:"+currentScore);
+    	scoreBoard.setLabel("Score:"+currentScore);
     }
     
 /** Checks the four corners of the rectangle binding the ball
