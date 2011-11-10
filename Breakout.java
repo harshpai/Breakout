@@ -271,7 +271,7 @@ public class Breakout extends GraphicsProgram {
     		    		
     		// Assume that the ball will move an equal amount 
     		// in the same direction as it would have otherwise
-    		ball.move(50*diff, 0);
+    		ball.move(2*diff, 0);
     		waitForClick();
     	} 
     	else if(vx<0 && leftBallX>rightPaddleX){
@@ -282,7 +282,7 @@ public class Breakout extends GraphicsProgram {
     		
     		// Assume that the ball will move an equal amount 
     		// in the same direction as it would have otherwise
-    		ball.move(50*diff, 0);
+    		ball.move(2*diff, 0);
     		waitForClick();
     	}
     		
