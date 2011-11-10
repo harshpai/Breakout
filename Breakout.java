@@ -71,7 +71,7 @@ public class Breakout extends GraphicsProgram {
     private static final int ROWS_PER_COLOR =2;
     
 /** Initial velocities of the ball */
-    private static final double VMAX = 3.0;
+    private static final double VMAX = 2.0;
     private static final double VMIN = 1.0;
 
 /** Animation cycle delay */
@@ -264,13 +264,23 @@ public class Breakout extends GraphicsProgram {
     	double rightBallX = ball.getX()+2*BALL_RADIUS;
     	
     	if(vx>0 && rightBallX < leftPaddleX) {
+    		
     		vx=-vx;
+    		
     		diff=rightBallX-paddle.getX();
+    		    		
+    		// Assume that the ball will move an equal amount 
+    		// in the same direction as it would have otherwise
     		ball.move(-2*diff, 0);
     	} 
     	else if(vx<0 && leftBallX>rightPaddleX){
+    		
     		vx=-vx;
+    		
     		diff=paddle.getX()+PADDLE_WIDTH-leftBallX;
+    		
+    		// Assume that the ball will move an equal amount 
+    		// in the same direction as it would have otherwise
     		ball.move(-2*diff, 0);
     	}
     		
