@@ -71,7 +71,7 @@ public class Breakout extends GraphicsProgram {
     private static final int ROWS_PER_COLOR =2;
     
 /** Initial velocities of the ball */
-    private static final double VMAX = 2.0;
+    private static final double VMAX = 3.0;
     private static final double VMIN = 1.0;
 
 /** Animation cycle delay */
