@@ -77,6 +77,9 @@ public class Breakout extends GraphicsProgram {
 /** Animation cycle delay */
     private static final int DELAY = 10;
     
+/** Paddle edge width percentage */    
+    private static final double PEDGE = 0.15;
+    
 /* Method: run() */
 /** Runs the Breakout program. */
     public void run() {        
@@ -255,9 +258,9 @@ public class Breakout extends GraphicsProgram {
     	
     	double diff;
     	
-    	// Consider paddle edge to be 10% paddle width on both sides
-    	double leftPaddleX = paddle.getX()+(0.1*PADDLE_WIDTH);
-    	double rightPaddleX = paddle.getX()+(0.9*PADDLE_WIDTH);
+    	// Consider paddle edge to be 15% paddle width on both sides
+    	double leftPaddleX = paddle.getX()+(PEDGE*PADDLE_WIDTH);
+    	double rightPaddleX = paddle.getX()+((1-PEDGE)*PADDLE_WIDTH);
     	
     	// right and left coordinates of binding rectangle of ball
     	double leftBallX = ball.getX();
