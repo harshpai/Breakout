@@ -165,6 +165,7 @@ public class Breakout extends GraphicsProgram {
         while (bounce()){
         
             // Extension: Add kicker
+        	// Double x velocity on 7th paddle bounce
             checkKicker();
         	
             // Check if all bricks are destroyed 
@@ -252,6 +253,8 @@ public class Breakout extends GraphicsProgram {
  * occurs with the edge of the paddle */    
     private void bouncePaddleX(){
     	
+    	double diff;
+    	
     	// Consider paddle edge to be 10% paddle width on both sides
     	double leftPaddleX = paddle.getX()+(0.1*PADDLE_WIDTH);
     	double rightPaddleX = paddle.getX()+(0.9*PADDLE_WIDTH);
@@ -260,8 +263,17 @@ public class Breakout extends GraphicsProgram {
     	double leftBallX = ball.getX();
     	double rightBallX = ball.getX()+2*BALL_RADIUS;
     	
-    	if((vx>0 && rightBallX < leftPaddleX) || (vx<0 && leftBallX>rightPaddleX))
+    	if(vx>0 && rightBallX < leftPaddleX) {
     		vx=-vx;
+    		diff=rightBallX-paddle.getX();
+    		ball.move(-2*diff, 0);
+    	} 
+    	else if(vx<0 && leftBallX>rightPaddleX){
+    		vx=-vx;
+    		diff=paddle.getX()+PADDLE_WIDTH-leftBallX;
+    		ball.move(-2*diff, 0);
+    	}
+    		
     	
     }
     
