@@ -371,7 +371,7 @@ public class Breakout extends GraphicsProgram {
         
         //Calculate paddle position
         double x = (WIDTH-PADDLE_WIDTH)/2;
-        double y = HEIGHT -PADDLE_HEIGHT-PADDLE_Y_OFFSET;
+        double y = HEIGHT -(PADDLE_HEIGHT+PADDLE_Y_OFFSET);
         
         paddle=createFilledRect(x, y, PADDLE_WIDTH, PADDLE_HEIGHT, Color.BLACK);
         
