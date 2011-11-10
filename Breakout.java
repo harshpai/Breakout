@@ -220,10 +220,10 @@ public class Breakout extends GraphicsProgram {
         		
         		//Extension: play sound
         		bounceClip.play();
+        		
+            	//Extension: bounce ball in x direction if it hits the paddle edge
+            	bouncePaddleX();
         	}
-        	
-        	//Extension: bounce ball in x direction if it hits the paddle edge
-        	bouncePaddleX();
             
         }
         // Ball collides with a brick
