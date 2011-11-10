@@ -390,6 +390,7 @@ public class Breakout extends GraphicsProgram {
  *  */    
     private void checkKicker(){
         paddleHits++;
+        scoreBoard.setLabel("phit"+paddleHits);
         if (paddleHits==7){
         	vx*=2;
         }
@@ -419,7 +420,7 @@ public class Breakout extends GraphicsProgram {
         add(paddle);        
         
         // Extension: add score board below the paddle
-        scoreBoard = new GLabel("phit"+paddleHits+" Score:0 "+"vx"+vx);
+        scoreBoard = new GLabel("Score:0");
         add(scoreBoard,x,y+2*PADDLE_HEIGHT);
     }
     
