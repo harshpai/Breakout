@@ -419,7 +419,7 @@ public class Breakout extends GraphicsProgram {
         add(paddle);        
         
         // Extension: add score board below the paddle
-        scoreBoard = new GLabel("Score:0");
+        scoreBoard = new GLabel("phit"+phit+"Score:0"+"vx"+vx);
         add(scoreBoard,x,y+2*PADDLE_HEIGHT);
     }
     
