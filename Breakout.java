@@ -75,7 +75,7 @@ public class Breakout extends GraphicsProgram {
     private static final double VMIN = 1.0;
 
 /** Animation cycle delay */
-    private static final int DELAY = 40;
+    private static final int DELAY = 10;
     
 /** Paddle edge width percentage */    
     private static final double PEDGE = 0.15;
