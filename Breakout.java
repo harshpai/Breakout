@@ -65,7 +65,7 @@ public class Breakout extends GraphicsProgram {
     private static final int CYAN_ROW = 4;
     
 /** Score for breaking a red brick */    
-    private static final int SCORE = 5;
+    private static final int MAXSCORE = 5;
     
 /** Number of brick layers with same color */    
     private static final int ROWS_PER_COLOR =2;
@@ -251,12 +251,13 @@ public class Breakout extends GraphicsProgram {
  *  */
     private void updateScore(GObject collider){
     	
-    	if(collider.getColor() ==  Color.RED) scoreBoard.setLabel("Score:"+RED_ROW+1);
-    	else if(collider.getColor() ==  Color.ORANGE) scoreBoard.setLabel("Score:"+ORANGE_ROW+1);
-    	else if(collider.getColor() ==  Color.YELLOW) scoreBoard.setLabel("Score:"+YELLOW_ROW+1);
-    	else if(collider.getColor() ==  Color.GREEN) scoreBoard.setLabel("Score:"+GREEN_ROW+1);
-    	else if(collider.getColor() ==  Color.CYAN) scoreBoard.setLabel("Score:"+CYAN_ROW+1);
+    	if(collider.getColor() ==  Color.RED) currentScore += MAXSCORE - RED_ROW;
+    	else if(collider.getColor() ==  Color.ORANGE) currentScore += MAXSCORE - ORANGE_ROW;
+    	else if(collider.getColor() ==  Color.YELLOW) currentScore += MAXSCORE - YELLOW_ROW;
+    	else if(collider.getColor() ==  Color.GREEN) currentScore += MAXSCORE - GREEN_ROW;
+    	else if(collider.getColor() ==  Color.CYAN) currentScore += MAXSCORE - CYAN_ROW;
     	    
+    	scoreBoard.setLabel("Score:"+currentScore);
     }
     
 /** Checks the four corners of the rectangle binding the ball
@@ -519,5 +520,8 @@ public class Breakout extends GraphicsProgram {
     
 /** Instance variable to count the number of paddle hits  */    
     private int paddleHits;
+    
+/** Instance variable to track score of thr player */
+    private int currentScore = 0;
 
 } 
