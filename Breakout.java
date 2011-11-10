@@ -161,12 +161,9 @@ public class Breakout extends GraphicsProgram {
         // Extension: Add kicker
         // For every new ball set paddleHits to 0
         paddleHits=0;
-        waitForClick();
         
         while (bounce()){
-        
 
-        	
             // Check if all bricks are destroyed 
             if(checkForCollision())
             {
