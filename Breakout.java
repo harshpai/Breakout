@@ -165,9 +165,7 @@ public class Breakout extends GraphicsProgram {
         
         while (bounce()){
         
-            // Extension: Add kicker
-        	// Double x velocity on 7th paddle bounce
-            checkKicker();
+
         	
             // Check if all bricks are destroyed 
             if(checkForCollision())
@@ -224,6 +222,10 @@ public class Breakout extends GraphicsProgram {
         		
             	//Extension: bounce ball in x direction if it hits the paddle edge
             	bouncePaddleX();
+            	
+                // Extension: Add kicker
+            	// Double x velocity on 7th paddle bounce
+                checkKicker();
         	}
             
         }
