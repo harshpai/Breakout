@@ -161,6 +161,7 @@ public class Breakout extends GraphicsProgram {
         // Extension: Add kicker
         // For every new ball set paddleHits to 0
         paddleHits=0;
+        waitForClick();
         
         while (bounce()){
         
