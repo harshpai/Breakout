@@ -78,7 +78,7 @@ public class Breakout extends GraphicsProgram {
     private static final int DELAY = 10;
     
 /** Paddle edge width percentage */    
-    private static final double PEDGE = 0.15;
+    private static final double PADDLE_EDGE = 0.15;
     
 /* Method: run() */
 /** Runs the Breakout program. */
@@ -109,10 +109,10 @@ public class Breakout extends GraphicsProgram {
         //Start turns
         for (int i=0 ;i<NTURNS;i++){
         	
-            /* Extension: Display a message to the user to start the game */
+            /* Extension: Display a message to the player to start the game */
             showLabel("Click to serve!",Color.BLACK);
             
-            // Wait for the user to serve
+            // Wait for the player to serve
             waitForClick();
 
             // The game begins. 
@@ -217,10 +217,10 @@ public class Breakout extends GraphicsProgram {
         		// in the same direction as it would have otherwise
         		ball.move(0, 2*diff);
         		
-        		//Extension: play sound
+        		// Extension: play sound
         		bounceClip.play();
         		
-            	//Extension: bounce ball in x direction if it hits the paddle edge
+            	// Extension: bounce ball in x direction if it hits the paddle edge
             	bouncePaddleX();
             	
                 // Extension: Add kicker
@@ -257,10 +257,10 @@ public class Breakout extends GraphicsProgram {
     private void bouncePaddleX(){
     	
     	// Consider paddle edge to be 15% paddle width on both sides
-    	double leftPaddleX = paddle.getX()+(PEDGE*PADDLE_WIDTH);
-    	double rightPaddleX = paddle.getX()+((1-PEDGE)*PADDLE_WIDTH);
+    	double leftPaddleX = paddle.getX()+(PADDLE_EDGE*PADDLE_WIDTH);
+    	double rightPaddleX = paddle.getX()+((1-PADDLE_EDGE)*PADDLE_WIDTH);
     	
-    	// right and left coordinates of binding rectangle of ball
+    	// Right and left coordinates of binding rectangle of ball
     	double leftBallX = ball.getX();
     	double rightBallX = ball.getX()+2*BALL_RADIUS;
     	
@@ -381,7 +381,7 @@ public class Breakout extends GraphicsProgram {
 /** Creates a ball at the center of the screen */
     private void createBall(){
     	
-    	//x and y coordinate of the ball
+    	// x and y coordinate of the ball
     	double x = WIDTH/2-BALL_RADIUS;
     	double y = HEIGHT/2-BALL_RADIUS;
     	
@@ -393,7 +393,7 @@ public class Breakout extends GraphicsProgram {
 /** Displays paddle at the bottom center of the screen */
     private void setupPaddle(){
         
-        //Calculate paddle position
+        // Calculate paddle position
         double x = (WIDTH-PADDLE_WIDTH)/2;
         double y = HEIGHT -PADDLE_HEIGHT-PADDLE_Y_OFFSET;
         
@@ -520,10 +520,10 @@ public class Breakout extends GraphicsProgram {
             
         }
     
-/** private instance variable label is used to display messages to the user */    
+/** private instance variable label is used to display messages to the player */    
     private GLabel label;
     
-/** private instance variable score is used to display score to the user */
+/** private instance variable score is used to display score to the player */
     private GLabel scoreBoard;
     
 /** private instance variable paddle rectangle */
