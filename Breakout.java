@@ -106,7 +106,7 @@ public class Breakout extends GraphicsProgram {
 
         boolean hasWon = false;
         
-        //Start turns
+        // Start turns
         for (int i=0 ;i<NTURNS;i++){
         	
             /* Extension: Display a message to the player to start the game */
@@ -290,7 +290,7 @@ public class Breakout extends GraphicsProgram {
  * */
     private GObject getCollidingObject(){
         
-        //Coordinates of the top left corner of the bounding rectangle of the ball
+        // Coordinates of the top left corner of the bounding rectangle of the ball
         double x = ball.getX();
         double y = ball.getY();
         
@@ -410,16 +410,16 @@ public class Breakout extends GraphicsProgram {
 /** Called on mouse move to move the paddle */
     public void mouseMoved(MouseEvent e){
         
-        //Screen border coordinates
+        // Screen border coordinates
         double rightEdge = WIDTH-PADDLE_WIDTH/2;
         double leftEdge = PADDLE_WIDTH/2;
         
-        //Check to keep the paddle from going out of screen
+        // Check to keep the paddle from going out of screen
         if(e.getX() >= leftEdge && e.getX() <= rightEdge){
             double lastX = paddle.getLocation().getX();
             
-            //moves the paddle such that the center of the paddle
-            //tracks the mouse
+            // Moves the paddle such that the center of the paddle
+            // tracks the mouse
             paddle.move(e.getX()-lastX-PADDLE_WIDTH/2,0);
         }
     }
@@ -467,7 +467,7 @@ public class Breakout extends GraphicsProgram {
             /* Calculate the brick color */
             Color color = getRowColor(numRow);            
         
-            //Create bricks in a row
+            // Create a brick row
             for (int i=0;i<NBRICKS_PER_ROW;i++){
                 
                 //The bricks layer has an offset on the left side
