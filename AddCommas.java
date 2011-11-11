@@ -25,7 +25,7 @@ public class AddCommas extends ConsoleProgram{
 		for (int i = 0;i < noOfCommas; i++){
 			int endIndex = length - i * 3;
 			int beginIndex = endIndex - 3;
-			result = digits.substring(beginIndex, endIndex)+result;
+			result =','+ digits.substring(beginIndex, endIndex)+result;
 		}
 		
 		return result;
