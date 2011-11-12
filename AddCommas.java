@@ -17,14 +17,30 @@ public class AddCommas extends ConsoleProgram{
 		}
 	}
 	
-
+	/*private String addCommasToNumericString(String digits){
+		String result=""; 
+		int length = digits.length();
+		int noOfCommas = (length-1)/3;
+		int endIndex  ;
+		int beginIndex = length;
+		 
+		for (int i = 0;i < noOfCommas; i++){
+			endIndex = length - i * 3;
+			beginIndex = endIndex - 3;
+			result =','+ digits.substring(beginIndex, endIndex)+result;
+		}
+		
+		result = digits.substring(0, beginIndex)+result;
+		return result;
+		
+	}*/
 	
 	private String addCommasToNumericString(String digits){
 		String result="";
 		int endIndex =digits.length()-1; 
 		
 		for (int i =endIndex ;i>=0;i--){
-			if(i!=endIndex && (endIndex -i)/3 == 0){
+			if(i!=endIndex  && (endIndex -i)/3 == 0){
 				result = ','+result;
 			}
 			result = digits.charAt(i)+result;
