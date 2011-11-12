@@ -13,7 +13,7 @@ public class removeStringOccurrences extends ConsoleProgram{
 		String strRemove =  readLine("Enter the character to remove from the string");
 		char ch = strRemove.charAt(0);
 		
-		println((removeAllOccurrences(str,ch));
+		println(removeAllOccurrences(str,ch));
 		
 		
 	}
