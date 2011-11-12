@@ -22,6 +22,9 @@ public class AddCommas extends ConsoleProgram{
 		String result="";
 		int endIndex =digits.length()-1; 
 		
+		// Starting from the highest index start counting downwards
+		// add a comma where the difference between the endIndex and 
+		// index of the current digit is divisible by 3
 		for (int i =endIndex ;i>=0;i--){
 			if(i!=endIndex  && (endIndex -i)%3 == 0){
 				result = ','+result;
