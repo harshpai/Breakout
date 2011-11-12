@@ -21,10 +21,10 @@ public class AddCommas extends ConsoleProgram{
 	
 	private String addCommasToNumericString(String digits){
 		String result="";
-		int length =digits.length(); 
+		int endIndex =digits.length()-1; 
 		
-		for (int i =length-1;i>=0;i--){
-			if(i!=length-1 && (length-i)/3 == 0){
+		for (int i =endIndex ;i>=0;i--){
+			if(i!=endIndex -1 && (endIndex -i)/3 == 0){
 				result = ','+result;
 			}
 			result = digits.charAt(i)+result;
