@@ -10,9 +10,9 @@ public class removeStringOccurrences extends ConsoleProgram{
 	public void run(){
 		
 		String str  = readLine("Enter a string:");
-		String strRemove =  readLine("Enter the character to remove from the string");
+		String strRemove =  readLine("Enter the character to remove from the string:");
 		char ch = strRemove.charAt(0);
-		
+		println("The modified string is:");
 		println(removeAllOccurrences(str,ch));
 		
 		run();		
