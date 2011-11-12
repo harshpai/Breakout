@@ -21,7 +21,8 @@ public class AddCommas extends ConsoleProgram{
 		String result=""; 
 		int length = digits.length();
 		int noOfCommas = (length-1)/3;
-		int endIndex , beginIndex = 0;
+		int endIndex  ;
+		int beginIndex = length;
 		 
 		for (int i = 0;i < noOfCommas; i++){
 			endIndex = length - i * 3;
