@@ -17,20 +17,8 @@ public class AddCommas extends ConsoleProgram{
 		}
 	}
 	
-	private String addCommasToNumericString(String digits) {
-		String result = "";
-		int len = digits.length();
-		int nDigits = 0;
-		for (int i = len - 1; i >= 0; i--) {
-		result = digits.charAt(i) + result;
-		nDigits++;
-		if (((nDigits % 3) == 0) && (i > 0)) {
-		result = "," + result;
-		}
-		}
-		return result;
-		}
-	/*private String addCommasToNumericString(String digits){
+
+	private String addCommasToNumericString(String digits){
 		String result="";
 		int endIndex =digits.length()-1; 
 		
@@ -42,5 +30,5 @@ public class AddCommas extends ConsoleProgram{
 		}
 		
 		return result;
-	}*/
+	}
 }
