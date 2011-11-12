@@ -2,7 +2,7 @@
 
 /**
  * This file is the solution to section 4 problem 1
- * It adds commas to 
+ * It adds commas to numeric strings
  * */
 
 import acm.program.*;
@@ -17,25 +17,20 @@ public class AddCommas extends ConsoleProgram{
 		}
 	}
 	
-	/*private String addCommasToNumericString(String digits){
-		String result=""; 
-		int length = digits.length();
-		int noOfCommas = (length-1)/3;
-		int endIndex  ;
-		int beginIndex = length;
-		 
-		for (int i = 0;i < noOfCommas; i++){
-			endIndex = length - i * 3;
-			beginIndex = endIndex - 3;
-			result =','+ digits.substring(beginIndex, endIndex)+result;
+	private String addCommasToNumericString(String digits) {
+		String result = "";
+		int len = digits.length();
+		int nDigits = 0;
+		for (int i = len - 1; i >= 0; i--) {
+		result = digits.charAt(i) + result;
+		nDigits++;
+		if (((nDigits % 3) == 0) && (i > 0)) {
+		result = "," + result;
 		}
-		
-		result = digits.substring(0, beginIndex)+result;
+		}
 		return result;
-		
-	}*/
-	
-	private String addCommasToNumericString(String digits){
+		}
+	/*private String addCommasToNumericString(String digits){
 		String result="";
 		int endIndex =digits.length()-1; 
 		
@@ -47,5 +42,5 @@ public class AddCommas extends ConsoleProgram{
 		}
 		
 		return result;
-	}
+	}*/
 }
