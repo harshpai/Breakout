@@ -15,6 +15,7 @@ public class removeStringOccurrences extends ConsoleProgram{
 		
 		println(removeAllOccurrences(str,ch));
 		
+		run();		
 		
 	}
 	
