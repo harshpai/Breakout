@@ -23,7 +23,7 @@ public class AddCommas extends ConsoleProgram{
 		int endIndex =digits.length()-1; 
 		
 		for (int i =endIndex ;i>=0;i--){
-			if(i!=endIndex  && (endIndex -i)%3 == 0){
+			if((endIndex +1 -i)%3 == 0){
 				result = ','+result;
 			}
 			result = digits.charAt(i)+result;
