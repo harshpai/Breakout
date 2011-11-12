@@ -20,14 +20,16 @@ public class AddCommas extends ConsoleProgram{
 	private String addCommasToNumericString(String digits){
 		String result=""; 
 		int length = digits.length();
-		int noOfCommas = (length/3)-1;
-		
+		int noOfCommas = (length-1)/3;
+		int endIndex , beginIndex = 0;
+		 
 		for (int i = 0;i < noOfCommas; i++){
-			int endIndex = length - i * 3;
-			int beginIndex = endIndex - 3;
+			endIndex = length - i * 3;
+			beginIndex = endIndex - 3;
 			result =','+ digits.substring(beginIndex, endIndex)+result;
 		}
 		
+		result = digits.substring(0, beginIndex)+result;
 		return result;
 		
 	}
