@@ -20,7 +20,7 @@ public class AddCommas extends ConsoleProgram{
 
 	
 	private String addCommasToNumericString(String digits){
-		String result;
+		String result="";
 		int length =digits.length(); 
 		
 		for (int i =length;i>=0;i--){
